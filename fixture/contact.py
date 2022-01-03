@@ -1,40 +1,40 @@
-class ContactsHelper:
+class ContactHelper:
     def __init__(self, app):
         self.app = app
 
-    def create(self, contacts):
+    def create(self, contact):
         wd = self.app.wd
         # init contacts creation
         wd.find_element_by_link_text("add new").click()
         # fill contacts form
-        self.fill_contact_form(contacts)
+        self.fill_contact_form(contact)
         # submit contacts creation
         wd.find_element_by_name("submit").click()
         self.return_to_home_page()
 
-    def edit_first_contact(self, contacts):
+    def edit_first_contact(self, contact):
         wd = self.app.wd
         # select first contacts
         wd.find_element_by_name("selected[]").click()
         # submit edit
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
         # fill contacts form
-        self.fill_contact_form(contacts)
+        self.fill_contact_form(contact)
         # submit contacts edit
         wd.find_element_by_name("update").click()
         self.return_to_home_page()
 
-    def fill_contact_form(self, contacts):
+    def fill_contact_form(self, contact):
         wd = self.app.wd
-        self.change_value("firstname", contacts.firstname)
-        self.change_value("middlename", contacts.middlename)
-        self.change_value("lastname", contacts.lastname)
-        self.change_value("nickname", contacts.nickname)
-        self.change_value("title", contacts.title)
-        self.change_value("company", contacts.company)
-        self.change_value("address", contacts.address)
-        self.change_value("home", contacts.home)
-        self.change_value("mobile", contacts.mobile)
+        self.change_value("firstname", contact.firstname)
+        self.change_value("middlename", contact.middlename)
+        self.change_value("lastname", contact.lastname)
+        self.change_value("nickname", contact.nickname)
+        self.change_value("title", contact.title)
+        self.change_value("company", contact.company)
+        self.change_value("address", contact.address)
+        self.change_value("home", contact.home)
+        self.change_value("mobile", contact.mobile)
 
     def change_value(self, field_name, text):
         wd = self.app.wd
