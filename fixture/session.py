@@ -24,5 +24,8 @@ class SessionHelper:
     def ensure_login(self, username, password):
         wd = self.app.wd
         self.app.open_home_page()
+        if wd.find_element_by_name("user") == None:
+            wd.find_element_by_name("user").send_keys(username)
+        if wd.find_element_by_name("pass") == None:
+            wd.find_element_by_name("pass").send_keys(password)
         self.login(username, password)
-
