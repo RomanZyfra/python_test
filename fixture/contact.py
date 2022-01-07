@@ -4,6 +4,7 @@ class ContactHelper:
 
     def create(self, contact):
         wd = self.app.wd
+        self.open_contact_page()
         # init contacts creation
         wd.find_element_by_link_text("add new").click()
         # fill contacts form
@@ -12,10 +13,14 @@ class ContactHelper:
         wd.find_element_by_name("submit").click()
         self.return_to_home_page()
 
+    def open_contact_page(self):
+        wd = self.app.wd
+        wd.get("http://localhost/addressbook/addressbook/")
+
     def edit_first_contact(self, contact):
         wd = self.app.wd
-        # select first contacts
-        wd.find_element_by_name("selected[]").click()
+        self.open_contact_page()
+        self.select_first_contact()
         # submit edit
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
         # fill contacts form
@@ -45,14 +50,15 @@ class ContactHelper:
 
     def delete_first_contact(self):
         wd = self.app.wd
-        # select first contacts
-        wd.find_element_by_name("selected[]").click()
+        self.open_contact_page()
+        self.select_first_contact()
         # submit deletion
         wd.find_element_by_xpath("//input[@value='Delete']").click()
-        wd.switch_to_alert().accept()
+        wd.switch_to.alert.accept()
 
     def modify_first_contact(self, new_contacts_data):
         wd = self.app.wd
+        self.open_contact_page()
         self.select_first_contact()
         # open modification form
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
