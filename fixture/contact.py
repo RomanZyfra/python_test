@@ -2,6 +2,10 @@ class ContactHelper:
     def __init__(self, app):
         self.app = app
 
+    def open_contact_page(self):
+        wd = self.app.wd
+        wd.get("http://localhost/addressbook/addressbook/")
+
     def create(self, contact):
         wd = self.app.wd
         self.open_contact_page()
@@ -11,22 +15,6 @@ class ContactHelper:
         self.fill_contact_form(contact)
         # submit contacts creation
         wd.find_element_by_name("submit").click()
-        self.return_to_home_page()
-
-    def open_contact_page(self):
-        wd = self.app.wd
-        wd.get("http://localhost/addressbook/addressbook/")
-
-    def edit_first_contact(self, contact):
-        wd = self.app.wd
-        self.open_contact_page()
-        self.select_first_contact()
-        # submit edit
-        wd.find_element_by_xpath("//img[@alt='Edit']").click()
-        # fill contacts form
-        self.fill_contact_form(contact)
-        # submit contacts edit
-        wd.find_element_by_name("update").click()
         self.return_to_home_page()
 
     def fill_contact_form(self, contact):
