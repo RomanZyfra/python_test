@@ -9,7 +9,7 @@ class Application:
         self.wd = webdriver.Chrome('C:\\chromedriver\\chromedriver.exe')
         self.session = SessionHelper(self)
         self.group = GroupHelper(self)
-        self.contacts = ContactHelper(self)
+        self.contact = ContactHelper(self)
 
     def is_valid(self):
         try:
@@ -20,7 +20,7 @@ class Application:
 
     def open_home_page(self):
         wd = self.wd
-        wd.get("http://localhost/addressbook/addressbook")
+        wd.get("http://localhost/addressbook")
 
     def destroy(self):
         self.wd.quit()
