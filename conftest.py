@@ -31,6 +31,6 @@ def stop(request):
 
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome")
-    parser.addoption("--base_url", action="store", default="http://localhost/addressbook/addressbook/")
+    parser.addoption("--base_url", action="store", default="http://localhost/addressbook")
     parser.addoption("--base_password", action="store", default="secret")
 

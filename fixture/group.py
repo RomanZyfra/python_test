@@ -8,7 +8,7 @@ class GroupHelper:
     def open_groups_page(self):
         wd = self.app.wd
         if not (wd.current_url.endswith("/group.php") and len(wd.find_elements_by_name("new")) > 0):
-            wd.get("http://localhost/addressbook/addressbook/group.php")
+            wd.get("http://localhost/addressbook/group.php")
 
     def create(self, group):
         wd = self.app.wd
